@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59dcd129-e92b-4fab-8894-714e7b14aca6" name="Changes" comment="Update database">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/style/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/style/footer.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/style/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/style/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/style/header2.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/style/header2.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +186,7 @@
       <workItem from="1782670277361" duration="151000" />
       <workItem from="1782814946942" duration="7080000" />
       <workItem from="1782904525733" duration="1904000" />
-      <workItem from="1782914817844" duration="7309000" />
+      <workItem from="1782914817844" duration="10300000" />
     </task>
     <task id="LOCAL-00001" summary="Update database">
       <option name="closed" value="true" />

@@ -146,38 +146,30 @@
         width:34px;
         height:34px;
     }
-
     .header-center{
         margin:0 8px;
     }
-
     .search-box{
         width:100%;
         max-width:170px;
         padding:6px 10px;
     }
-
     .search-box input{
         font-size:12px;
     }
-
     .search-box img{
         width:15px;
     }
-
     .header-right{
         gap:8px;
     }
-
     .cart-group img,
     .user-group img,
     .bell-group img{
         width:20px;
     }
-
     .user-avatar{
         width:24px;
         height:24px;
     }
-
 }
