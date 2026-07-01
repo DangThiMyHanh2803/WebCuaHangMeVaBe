@@ -8,15 +8,7 @@
     margin-bottom: 20px;
 }
 
-.banner-container img {
-    flex: 1;
-    min-width: 0;
-    object-fit: cover;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
+.banner-container img { flex: 1; min-width: 0; object-fit: cover; border-radius: 5px; cursor: pointer; transition: 0.3s; }
 .banner-container img:hover {
     transform: scale(1.02);
 }
@@ -48,15 +40,33 @@
     display: flex;
     flex-direction: column;
 }
-
+/* Nút danh mục */
+.category-toggle{
+    display:none;
+    margin-bottom:5px;
+}
+.category-toggle button{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    border:none;
+    background: #20e367;
+    color:white;
+    padding:10px 10px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+}
+.category-wrapper{
+    display:block;
+}
 /* tabs */
 .tabs {
     display: flex;
     gap: 2px;
     margin-bottom: 15px;
-    width: 100%;
-}
-
+    width: 100%; }
 .tabs button {
     background: #fce7f3; /* hồng nhạt */
     border: none;
@@ -78,13 +88,17 @@
     background: linear-gradient(135deg, #f472b6, #4ade80);
     color: white;
 }
-.home-product-list {
+/*.home-product-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
 
-}
-/* RIGHT SIDEBAR */
+}*/
+.home-product-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:15px;
+}/* RIGHT SIDEBAR */
 .right-sidebar {
     width: 250px;
     display: flex;
@@ -105,13 +119,20 @@
 }
 
 /* box ưu đãi */
-.promo-box {
+/*.promo-box {
     background: #fff;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}*/
+.promo-box {
+    flex: 1;
+    min-width: 0;
+    background: #fff;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
 }
-
 .promo-box h4 {
     margin-bottom: 10px;
     color: #db2777; /* hồng */
@@ -151,4 +172,251 @@
 .star {
     font-size: 18px;
     color: #facc15; /* vàng */
+}
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+/* Laptop nhỏ (<=1200px) */
+@media (max-width: 1200px) {
+
+    .home-product-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .right-sidebar {
+        width: 220px;
+    }
+}
+
+/* Tablet (<=992px) */
+@media (max-width: 992px) {
+
+    .home {
+        padding: 15px;
+    }
+
+    .home-container {
+        flex-direction: column;
+    }
+
+    /* Banner đầu trang */
+    .banner-container {
+        flex-wrap: wrap;
+    }
+
+    .banner-container img {
+        width: calc(50% - 8px);
+        flex: unset;
+    }
+
+    /* Hiện nút ☰ */
+    .category-toggle{
+        display:block;
+    }
+    /* Ẩn sidebar */
+    .category-wrapper{
+        display:none;
+    }
+    /* Hiện khi bấm */
+    .category-wrapper.show{
+        display:block;
+        margin-bottom:1px;
+    }
+
+    /* Sidebar bên phải */
+    .right-sidebar {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+    /* Tabs */
+    .tabs {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+        margin-bottom: 15px;
+    }
+
+    .tabs button {
+        width: 100%;
+        min-width: 0;
+        padding: 8px 4px;
+        font-size: 13px;
+        height: 38px;
+        white-space: nowrap;
+    }
+
+    .promo-box {
+        flex: 1;
+        padding: 12px;
+    }
+
+    .promo-banner {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .promo-box h4 {
+        font-size: 15px;
+    }
+
+    .promo-box p,
+    .promo-box li {
+        font-size: 13px;
+    }
+
+    /* Sản phẩm */
+    .home-product-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Tabs */
+
+}
+/* Mobile lớn (<=768px) */
+@media (max-width: 768px) {
+    .home {
+        padding: 10px;
+        margin-top: 10px;
+    }
+    .breadcrumb {
+        margin-top: 20px;
+        font-size: 13px;
+    }
+
+    /* Ẩn banner */
+    .banner-container{
+        display:none;
+    }
+    /* Hiện nút ☰ */
+    .category-toggle{
+        display:block;
+    }
+    /* Ẩn sidebar */
+    .category-wrapper{
+        display:none;
+    }
+    /* Hiện khi bấm */
+    .category-wrapper.show{
+        display:block;
+        margin-bottom:1px;
+    }
+    /* Tabs */
+    .tabs {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+        margin-bottom: 15px;
+    }
+
+    .tabs button {
+        width: 100%;
+        min-width: 0;
+        padding: 8px 4px;
+        font-size: 13px;
+        height: 38px;
+        white-space: nowrap;
+    }
+    /* Danh sách sản phẩm */
+    .home-product-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    /* Sidebar ưu đãi */
+    .right-sidebar {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .promo-box {
+        width: 100%;
+        min-width: 0;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .promo-banner {
+        height: 90px;
+    }
+
+    .title-icon {
+        font-size: 14px;
+    }
+
+    .icon {
+        font-size: 14px;
+    }
+
+    .promo-box p,
+    .promo-box li {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+}
+/* Mobile nhỏ (<=576px) */
+@media (max-width: 576px) {
+    .home {
+        padding: 8px;
+        margin-top: 20px;
+    }
+    .home-product-list {
+        grid-template-columns: 1fr;
+    }
+    .banner-container{
+        display:none !important;
+    }
+    /* Hiện nút ☰ */
+    .category-toggle{
+        display:block;
+    }
+    /* Ẩn sidebar */
+    .category-wrapper{
+        display:none;
+    }
+    /* Hiện khi bấm */
+    .category-wrapper.show{
+        display:block;
+        margin-bottom:10px;
+    }
+    .tabs{
+        gap:4px;
+    }
+
+    .tabs button{
+        font-size:12px;
+        padding:6px 2px;
+        height:36px;
+    }
+    .right-sidebar{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+    }
+
+    .promo-box{
+        padding:8px;
+    }
+
+    .promo-banner{
+        height:70px;
+    }
+
+    .title-icon{
+        justify-content:center;
+        font-size:13px;
+    }
+
+    .promo-box ul,
+    .promo-box p{
+        display:none;
+    }
+
+    .breadcrumb {
+        font-size: 12px;
+    }
 }

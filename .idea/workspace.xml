@@ -6,9 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="59dcd129-e92b-4fab-8894-714e7b14aca6" name="Changes" comment="Update database">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/discountCoupon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/discountCoupon.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageDetailsProducts/detailProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageDetailsProducts/detailProduct.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pagePayment/payment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pagePayment/payment.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/PhoneForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/PhoneForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/TermsModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TermsModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/accoutMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/accoutMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/registerForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/registerForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/style/category.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/style/category.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageHome/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageHome/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageHome/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageHome/home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +192,8 @@
       <workItem from="1782667159684" duration="1698000" />
       <workItem from="1782670277361" duration="151000" />
       <workItem from="1782814946942" duration="7080000" />
-      <workItem from="1782904525733" duration="1134000" />
+      <workItem from="1782904525733" duration="1904000" />
+      <workItem from="1782914817844" duration="6755000" />
     </task>
     <task id="LOCAL-00001" summary="Update database">
       <option name="closed" value="true" />

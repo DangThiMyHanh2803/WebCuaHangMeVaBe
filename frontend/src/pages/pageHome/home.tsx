@@ -9,10 +9,9 @@ import banner3 from "../../assets/banners/banner3.png";
 import banner6 from "../../assets/banners/banner6.png";
 import banner5 from "../../assets/banners/banner5.png";
 import "./home.css";
-import { FaGift, FaFire, FaStar, FaTruck, FaMoneyBillWave } from "react-icons/fa";
+import { FaGift, FaFire, FaStar, FaTruck, FaMoneyBillWave, FaBars } from "react-icons/fa";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
-
 interface Product {
     productId: number;
     productName: string;
@@ -36,7 +35,8 @@ const Home: React.FC = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(8);
-
+    const [showCategory, setShowCategory] = useState(false);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const sortedProducts = [...products].sort((a, b) => {
         if (sort === "price-asc") return a.price - b.price;
         if (sort === "price-desc") return b.price - a.price;
@@ -100,7 +100,7 @@ const Home: React.FC = () => {
         setActiveTab(tab);
     };
 
-    // ✅ HÀM THÊM VÀO GIỎ HÀNG - dùng đúng key "cart_products" và đủ fields
+    // HÀM THÊM VÀO GIỎ HÀNG - dùng đúng key "cart_products" và đủ fields
     const handleAddToCart = (product: Product) => {
         const existingCart: any[] = JSON.parse(localStorage.getItem("cart_products") || "[]");
 
@@ -119,8 +119,8 @@ const Home: React.FC = () => {
                 image: product.imageUrl || "https://via.placeholder.com/150",
                 quantity: 1,
                 size: "S",
-                checked: true,              // ✅ mặc định chọn luôn để tính tiền ngay
-                priceBySize: {              // ✅ field bắt buộc của cartX
+                checked: true,              // mặc định chọn luôn để tính tiền ngay
+                priceBySize: {              // field bắt buộc của cartX
                     S: product.price,
                     M: product.price,
                     L: product.price
@@ -128,14 +128,24 @@ const Home: React.FC = () => {
             });
         }
 
-        // ✅ Lưu đúng key "cart_products" mà cartX.tsx đọc
+        // Lưu đúng key "cart_products" mà cartX.tsx đọc
         localStorage.setItem("cart_products", JSON.stringify(existingCart));
         alert(`Đã thêm "${product.productName}" vào giỏ hàng!`);
 
         // Phát sự kiện để Header cập nhật số lượng giỏ hàng
         window.dispatchEvent(new Event("cartUpdated"));
     };
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        handleResize();
+        window.addEventListener("resize", handleResize);
 
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
     return (
         <div className="home">
 
@@ -149,12 +159,19 @@ const Home: React.FC = () => {
                 <img src={banner2} alt="banner2" />
                 <img src={banner3} alt="banner3" />
             </div>
-
             <div className="home-container">
-                <CategorySidebar
-                    selectedCategoryId={selectedCategoryId}
-                    onSelectCategory={handleSelectCategory}
-                />
+                <div className="category-toggle">
+                    <button onClick={() => setShowCategory(!showCategory)}>
+                        <FaBars />
+                        <span>Danh mục</span>
+                    </button>
+                </div>
+                <div className={showCategory ? "category-wrapper show" : "category-wrapper"}>
+                    <CategorySidebar
+                        selectedCategoryId={selectedCategoryId}
+                        onSelectCategory={handleSelectCategory}
+                    />
+                </div>
                 <div className="product-section">
                     <div className="tabs">
                         <button
@@ -163,23 +180,26 @@ const Home: React.FC = () => {
                         >
                             Tất cả
                         </button>
+
                         <button
                             className={activeTab === "featured" ? "active" : ""}
                             onClick={() => handleTabChange("featured")}
                         >
-                            Sản phẩm tiêu biểu
+                            {isMobile ? "Tiêu biểu" : "Sản phẩm tiêu biểu"}
                         </button>
+
                         <button
                             className={activeTab === "new" ? "active" : ""}
                             onClick={() => handleTabChange("new")}
                         >
-                            Sản phẩm mới
+                            {isMobile ? "Mới" : "Sản phẩm mới"}
                         </button>
+
                         <button
                             className={activeTab === "best-selling" ? "active" : ""}
                             onClick={() => handleTabChange("best-selling")}
                         >
-                            Sản phẩm bán chạy
+                            {isMobile ? "Bán chạy" : "Sản phẩm bán chạy"}
                         </button>
                     </div>
 
@@ -195,7 +215,7 @@ const Home: React.FC = () => {
                                         name={item.productName}
                                         price={item.price}
                                         image={item.imageUrl || "https://via.placeholder.com/150"}
-                                        onAddToCart={() => handleAddToCart(item)} // ✅ dùng hàm chung
+                                        onAddToCart={() => handleAddToCart(item)} //  dùng hàm chung
                                     />
                                 ))}
                             </div>

@@ -19,7 +19,6 @@ const Pagination: React.FC<PaginationProps> = ({currentPage, totalPages, setCurr
             setCurrentPage(currentPage + 1);
         }
     };
-
     const goToPage = (page: number) => {
         if (page >= 1 && page <= totalPages) {
             setCurrentPage(page);
@@ -38,34 +37,22 @@ const Pagination: React.FC<PaginationProps> = ({currentPage, totalPages, setCurr
         }
     };
     const renderDots = () => {
-
         if (showInput) {
-
             return (
-
-                <input
-                    type="number"
-                    className="page-input"
-                    autoFocus
-                    min={1}
-                    max={totalPages}
-                    value={pageInput}
+                <input type="number" className="page-input" autoFocus
+                    min={1} max={totalPages} value={pageInput}
                     onChange={(e) =>
                         setPageInput(e.target.value)
                     }
                     onKeyDown={(e) => {
-
                         if (e.key === "Enter") {
-
                             const page = Number(pageInput);
-
                             if (
                                 page >= 1 &&
                                 page <= totalPages
                             ) {
                                 setCurrentPage(page);
                             }
-
                             setShowInput(false);
                             setPageInput("");
                         }
@@ -75,15 +62,10 @@ const Pagination: React.FC<PaginationProps> = ({currentPage, totalPages, setCurr
                         setPageInput("");
                     }}
                 />
-
             );
         }
-
         return (
-            <button
-                className="page-dots"
-                onClick={() => setShowInput(true)}
-            >
+            <button className="page-dots" onClick={() => setShowInput(true)}>
                 ...
             </button>
         );
@@ -96,7 +78,6 @@ const Pagination: React.FC<PaginationProps> = ({currentPage, totalPages, setCurr
                 onClick={() => goToPage(1)}>1
             </button>
         );
-
         // Trang 2
         if (currentPage === 2) {
             pages.push(
@@ -145,9 +126,7 @@ const Pagination: React.FC<PaginationProps> = ({currentPage, totalPages, setCurr
             <button className="page-nav" disabled={currentPage === 1} onClick={handlePrev}>◀</button>
             {renderPages()}
             <button className="page-nav" disabled={currentPage === totalPages} onClick={handleNext}>▶</button>
-
         </div>
     );
 };
-
 export default Pagination;

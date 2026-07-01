@@ -38,8 +38,9 @@ const AccountMenu: React.FC = () => {
                     <a href="/address">Địa chỉ nhận hàng</a>
                 </li>
                 <a href="/history" className={path === "/history" ? "active" : ""}>Lịch sử đơn hàng</a>
-                <li>Voucher của tôi</li>
-                <li>Đánh giá của tôi</li>
+                <li className={path === "/account/reviews" ? "active" : ""}>
+                    <a href="/account/reviews">Đánh giá của tôi</a>
+                </li>
                 <li className={path === "/account" ? "active" : ""}>
                     <a href="/account">Thông tin cá nhân</a>
                 </li>
