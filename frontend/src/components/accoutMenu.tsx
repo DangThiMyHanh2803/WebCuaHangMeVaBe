@@ -31,7 +31,9 @@ const AccountMenu: React.FC = () => {
             <ul className="menu">
                 <li>Thẻ thành viên</li>
                 <li>Xu của bạn</li>
-                <li>Gói ưu đãi</li>
+                <li className={path === "/voucher" ? "active" : ""}>
+                    <a href="/voucher">Gói ưu đãi</a>
+                </li>
                 <li className={path === "/address" ? "active" : ""}>
                     <a href="/address">Địa chỉ nhận hàng</a>
                 </li>

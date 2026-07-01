@@ -211,13 +211,81 @@
 }
 
 /* Khu vực Giá */
-.product-price-box {
-    background-color: #fafafa;
-    padding: 15px 20px;
+.discount-slider{
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
-    border-radius: 8px;
+    gap: 10px;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 8px;
+    margin-bottom: 13px;
+}
+.discount-slider-list{
+    flex: 1;
+
+    display: flex;
+    gap: 8px;
+
+    overflow: hidden;      /* Ẩn voucher vượt quá */
+    white-space: nowrap;
+
+    scroll-behavior: smooth;
+
+    align-items: center;
+}
+.discount-list::-webkit-scrollbar{
+    display: none;
+}
+
+.discount-list{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.discount-nav{
+    width: 30px;
+    height: 30px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 50%;
+
+    background: #fff;
+    color: #666;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+    flex-shrink: 0;
+}
+
+.discount-nav:hover{
+    background: #fce7f3;
+    color: #ec4899;
+    border-color: #f9a8d4;
+}
+
+.discount-nav:disabled{
+    opacity: .4;
+    cursor: not-allowed;
+}
+.product-discount-section{
+    margin:25px 0;
+}
+
+.discount-title{
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+.discount-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
 }
 
 .original-price {

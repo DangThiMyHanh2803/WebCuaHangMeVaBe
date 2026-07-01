@@ -1,0 +1,95 @@
+.discount-card{
+    width:120px;
+    height:42px;
+    display:flex;
+    align-items:center;
+    flex-shrink:0;
+    background:#fff;
+    border:1px solid #ececec;
+    border-radius:6px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.25s;
+    box-shadow:0 1px 4px rgba(0,0,0,.06);
+}
+.discount-card:hover{
+    border-color:#ff6b9a;
+    box-shadow:0 2px 8px rgba(255,107,154,.2);
+}
+.discount-left{
+    width:34px;
+    height:100%;
+    background:#ff5d73;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+}
+.ticket-icon{
+    font-size:8px;
+    margin-bottom:1px;
+}
+.discount-left h2{
+    margin:0;
+    font-size:7px;
+    font-weight:bold;
+    line-height:1;
+}
+.discount-center{
+    flex:1;
+    padding:2px 4px;
+    overflow:hidden;
+}
+.discount-center h3{
+    margin:0;
+    font-size:8px;
+    font-weight:600;
+    margin-left: 5px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.discount-center p{
+    margin-top:1px;
+    font-size:7px;
+    margin-left: 5px;
+    color:#777;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.discount-right{
+    width:28px;
+    height:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-right: 8px;
+    flex-shrink:0;
+}
+.discount-right button{
+    width:22px;
+    height:16px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:0;
+    margin:0;
+    border:none;
+    border-radius:3px;
+    background:#ff5d73;
+    color:#fff;
+    font-size:7px;
+    font-weight:600;
+    line-height:1;
+
+    cursor:pointer;
+}
+
+.discount-right button:disabled{
+    background:#22c55e;
+    color:#fff;
+}

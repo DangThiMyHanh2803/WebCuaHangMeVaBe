@@ -193,7 +193,28 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
+.voucher-chip{
 
+    border:1px solid #ff5d73;
+    background:#fff0f5;
+
+    color:#ff5d73;
+
+    border-radius:15px;
+
+    padding:5px 12px;
+
+    cursor:pointer;
+
+    font-size:13px;
+}
+
+.voucher-chip:hover{
+
+    background:#ff5d73;
+
+    color:white;
+}
 .payment-total-summary {
     align-self: flex-end;
     width: 300px;
