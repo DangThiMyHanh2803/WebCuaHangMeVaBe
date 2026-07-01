@@ -180,23 +180,99 @@ body {
     font-weight: 600;
     color: #333;
 }
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-    .search-box {
-        width: 250px;
+@media (max-width:768px){
+
+    .header{
+        height:60px;
+        padding:0 12px;
     }
+
+    .header-logo{
+        width:40px;
+        height:40px;
+    }
+
+    .search-box{
+        max-width:240px;
+        padding:8px 12px;
+    }
+
+    .search-box input{
+        font-size:13px;
+    }
+
+    .header-right{
+        gap:10px;
+    }
+
+    /* chỉ hiện icon */
+    .cart-group span,
+    .user-group span,
+    .user-profile span{
+        display:none;
+    }
+
+    .cart-group,
+    .user-group,
+    .user-profile{
+        padding-right:0;
+        border-right:none;
+    }
+
+    .cart-group img,
+    .user-group img,
+    .bell-group img{
+        width:24px;
+    }
+
+    .user-avatar{
+        width:28px;
+        height:28px;
+    }
+
 }
-
-@media (max-width: 600px) {
-    .header {
-        padding: 0 10px;
+@media (max-width:576px){
+    .header{
+        height:55px;
+        padding:0 8px;
     }
 
-    .search-box {
-        width: 180px;
+    .header-logo{
+        width:34px;
+        height:34px;
     }
 
-    .login-link {
-        display: none;
+    .header-center{
+        margin:0 8px;
     }
+
+    .search-box{
+        width:100%;
+        max-width:170px;
+        padding:6px 10px;
+    }
+
+    .search-box input{
+        font-size:12px;
+    }
+
+    .search-box img{
+        width:15px;
+    }
+
+    .header-right{
+        gap:8px;
+    }
+
+    .cart-group img,
+    .user-group img,
+    .bell-group img{
+        width:20px;
+    }
+
+    .user-avatar{
+        width:24px;
+        height:24px;
+    }
+
 }
