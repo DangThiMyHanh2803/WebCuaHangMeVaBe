@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './detailProduct.css';
 import cartIcon from '../../assets/header/cart.svg';
+
 interface ProductImage {
     imageId: number;
     productId: number;
     imageUrl: string;
-    isMain: number; // 1 = ảnh chính, 0 = thumbnail
+    isMain: number;
 }
+
 interface Product {
     productId: number;
     productName: string;
@@ -54,19 +56,16 @@ const DetailProduct: React.FC = () => {
     const [productSpecs, setProductSpecs] = useState<ProductSpec[]>([]);
     const [stockQuantity, setStockQuantity] = useState<number>(0);
     const [reviews, setReviews] = useState<Review[]>([]);
-    const [userRating, setUserRating] = useState<number>(5);
-    const [userComment, setUserComment] = useState<string>('');
-    const [isSubmittingReview, setIsSubmittingReview] = useState<boolean>(false);
-    const [filterRating, setFilterRating] = useState<number>(0);
 
     const [mainImage, setMainImage] = useState<string>('/img/default-product.jpg');
     const [productImages, setProductImages] = useState<string[]>([]);
     const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
+    // =================== FETCH DATA ===================
     useEffect(() => {
         const fetchProductData = async () => {
             try {
-                // 1. Lấy thông tin sản phẩm
+                // 1. Thông tin sản phẩm
                 const response = await axios.get(`http://localhost:5000/api/product/${id}`);
                 const raw = Array.isArray(response.data) ? response.data[0] : response.data;
 
@@ -84,20 +83,17 @@ const DetailProduct: React.FC = () => {
                     if (sizes.length > 0) setSelectedSize(sizes[0]);
                 }
 
-                // 2. Lấy ảnh từ API product-image
+                // 2. Ảnh sản phẩm
                 try {
                     const imgRes = await axios.get(`http://localhost:5000/api/product-image/product/${id}`);
                     const imgData: ProductImage[] = imgRes.data;
 
-                    // Ảnh chính (isMain = 1)
                     const mainImg = imgData.find(img => img.isMain === 1);
-                    // Ảnh phụ (isMain = 0)
                     const thumbImgs = imgData.filter(img => img.isMain === 0);
 
                     if (mainImg) {
                         setMainImage(mainImg.imageUrl);
                     } else if (data.imageUrl) {
-                        // Fallback sang imageUrl từ product nếu không có ảnh main
                         setMainImage(
                             data.imageUrl.startsWith('http')
                                 ? data.imageUrl
@@ -105,14 +101,12 @@ const DetailProduct: React.FC = () => {
                         );
                     }
 
-                    // Thumbnails: ảnh phụ, nếu không có thì dùng ảnh main
                     setProductImages(
                         thumbImgs.length > 0
                             ? thumbImgs.map(img => img.imageUrl)
                             : mainImg ? [mainImg.imageUrl] : []
                     );
                 } catch {
-                    // Fallback nếu API product-image lỗi
                     if (data.imageUrl) {
                         const resolved = data.imageUrl.startsWith('http')
                             ? data.imageUrl
@@ -122,30 +116,28 @@ const DetailProduct: React.FC = () => {
                     }
                 }
 
-                // 3. Lấy tồn kho từ product_stock
+                // 3. Tồn kho
                 try {
                     const stockRes = await axios.get(`http://localhost:5000/api/product-stock/product/${id}`);
-                    console.log('[Stock API]', stockRes.data);
                     setStockQuantity(stockRes.data?.quantity ?? 0);
-                } catch (err) {
-                    console.error('[Stock API error]', err);
+                } catch {
                     setStockQuantity(0);
                 }
 
-                // 5. Lấy thông số kỹ thuật
+                // 4. Thông số kỹ thuật
                 try {
                     const specRes = await axios.get(`http://localhost:5000/api/product-spec/product/${id}`);
                     setProductSpecs(Array.isArray(specRes.data) ? specRes.data : []);
                 } catch {
-                    // Chưa có specs — bỏ qua
+                    // bỏ qua
                 }
 
-                // 6. Lấy đánh giá
+                // 5. Đánh giá
                 try {
                     const reviewRes = await axios.get(`http://localhost:5000/api/review/product/${id}`);
                     setReviews(Array.isArray(reviewRes.data) ? reviewRes.data : []);
                 } catch {
-                    // Chưa có review — bỏ qua
+                    // bỏ qua
                 }
 
                 setLoading(false);
@@ -160,6 +152,7 @@ const DetailProduct: React.FC = () => {
         window.scrollTo(0, 0);
     }, [id]);
 
+    // =================== HANDLERS ===================
     const handleQuantityChange = (type: 'plus' | 'minus') => {
         setQuantity(prev => {
             const maxStock = stockQuantity || 100;
@@ -197,23 +190,9 @@ const DetailProduct: React.FC = () => {
     };
 
     const { originalPrice, finalPrice, discount, rawFinalPrice, totalPrice, rawTotalPrice, temporaryTotal, discountAmount } = calculatePrices();
-    const checkAuth = (): boolean => {
-        const userStr = localStorage.getItem("user");
-        if (!userStr) {
-            navigate("/login");
-            return false;
-        }
-        const user = JSON.parse(userStr);
-        if (user.isVerified === false || user.isVerified === 0) {
-            navigate("/login");
-            return false;
-        }
-        return true;
-    };
 
     const handleAddToCart = () => {
         if (!product) return;
-        if (!checkAuth()) return;
 
         const cartItem = {
             id: product.productId,
@@ -242,63 +221,7 @@ const DetailProduct: React.FC = () => {
         alert("Đã thêm vào giỏ hàng!");
     };
 
-    const handleBuyNow = () => {
-        if (!product) return;
-        if (!checkAuth()) return;
-
-        navigate("/payment", {
-            state: {
-                checkoutProducts: [{
-                    id: product.productId,
-                    name: product.productName,
-                    image: mainImage,
-                    quantity,
-                    size: selectedSize,
-                    checked: true,
-                    priceBySize: { [selectedSize]: rawFinalPrice }
-                }],
-                temporaryTotal,
-                discountAmount,
-                finalTotal: rawTotalPrice
-            }
-        });
-    };
-
-    const handleSubmitReview = async () => {
-        if (!userComment.trim()) {
-            alert("Vui lòng nhập nội dung đánh giá!");
-            return;
-        }
-
-        const storedUser = localStorage.getItem("user");
-        if (!storedUser) {
-            alert("Vui lòng đăng nhập để gửi đánh giá!");
-            return;
-        }
-        const currentUser = JSON.parse(storedUser);
-
-        try {
-            setIsSubmittingReview(true);
-            const newReview = {
-                productId: product?.productId,
-                userId: currentUser.userId,
-                orderId: null,
-                rating: userRating,
-                comment: userComment
-            };
-            await axios.post('http://localhost:5000/api/review', newReview);
-            alert("Cảm ơn bạn đã gửi đánh giá!");
-            setReviews([{ ...newReview, userName: currentUser.userName || 'Bạn', created_at: new Date().toISOString() }, ...reviews]);
-            setUserComment('');
-            setUserRating(5);
-        } catch (error) {
-            console.error("Lỗi khi gửi đánh giá:", error);
-            alert("Có lỗi xảy ra, không thể gửi đánh giá!");
-        } finally {
-            setIsSubmittingReview(false);
-        }
-    };
-
+    // =================== RENDER ===================
     if (loading) return <div className="loading-container">Đang tải...</div>;
     if (!product) return <div className="error-container">Không tìm thấy sản phẩm.</div>;
 
@@ -322,8 +245,8 @@ const DetailProduct: React.FC = () => {
                 </div>
 
                 <div className="product-main-info row">
+                    {/* ---- Gallery ---- */}
                     <div className="col-md-7 product-gallery">
-                        {/* Ảnh chính + nút prev/next */}
                         <div className="main-image-wrapper">
                             <button
                                 className="img-nav-btn img-nav-prev"
@@ -354,7 +277,7 @@ const DetailProduct: React.FC = () => {
                                 }}
                             >&#8250;</button>
                         </div>
-                        {/* Thumbnails căn giữa */}
+
                         <div className="thumbnail-list">
                             {productImages.map((img, index) => (
                                 <div
@@ -377,6 +300,7 @@ const DetailProduct: React.FC = () => {
                         </div>
                     </div>
 
+                    {/* ---- Thông tin mua hàng ---- */}
                     <div className="col-md-5 product-shop-ops d-flex flex-column justify-content-center ps-md-5">
                         <h1 className="product-title">{product.productName}</h1>
                         {product.description && (
@@ -384,9 +308,9 @@ const DetailProduct: React.FC = () => {
                         )}
 
                         <div className="product-rating-row">
-                            <div className="stars">
+                            <div className="stars" style={{ color: '#fb71b0' }}>
                                 {'★'.repeat(Math.round(Number(avgRating)))}{'☆'.repeat(5 - Math.round(Number(avgRating)))}
-                                <span className="rating-text">({avgRating})</span>
+                                <span style={{ color: '#333' }}>({avgRating})</span>
                             </div>
                             <span className="divider">|</span>
                             <span className="text-muted">{reviews.length} Đánh giá</span>
@@ -446,16 +370,16 @@ const DetailProduct: React.FC = () => {
                             </div>
                         </div>
 
-                        <div className="dynamic-total-box">
-                            <span className="dynamic-total-label">
+                        <div className="dynamic-total-box" style={{ marginTop: '20px', padding: '12px 18px', background: '#fff5f8', borderRadius: '10px', border: '1px dashed #fb71b0' }}>
+                            <span style={{ fontSize: '15px', fontWeight: '500', color: '#555' }}>
                                 Tổng tạm tính ({quantity} sản phẩm):
                             </span>
-                            <div className="dynamic-total-price">
+                            <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#fb71b0', marginTop: '4px' }}>
                                 {totalPrice} đ
                             </div>
                         </div>
+
                         <div className="action-buttons">
-                            {/* GIỎ HÀNG — icon only */}
                             <button className="btn-cart" onClick={handleAddToCart}>
                                 <img
                                     src={cartIcon}
@@ -467,7 +391,6 @@ const DetailProduct: React.FC = () => {
                                     }}
                                 />
                             </button>
-                            {/* MUA NGAY */}
                             <Link
                                 to="/payment"
                                 state={{
@@ -488,15 +411,22 @@ const DetailProduct: React.FC = () => {
                                 <button className="btn-buy-now">MUA NGAY</button>
                             </Link>
                         </div>
+                    </div>
                 </div>
-            </div>
 
+                {/* ---- Tab Mô tả / Đánh giá ---- */}
                 <div className="product-bottom-info">
                     <div className="tab-headers">
-                        <button className={`tab-link ${activeTab === 'desc' ? 'active' : ''}`} onClick={() => setActiveTab('desc')}>
+                        <button
+                            className={`tab-link ${activeTab === 'desc' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('desc')}
+                        >
                             MÔ TẢ SẢN PHẨM
                         </button>
-                        <button className={`tab-link ${activeTab === 'review' ? 'active' : ''}`} onClick={() => setActiveTab('review')}>
+                        <button
+                            className={`tab-link ${activeTab === 'review' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('review')}
+                        >
                             ĐÁNH GIÁ ({reviews.length})
                         </button>
                     </div>
@@ -508,12 +438,12 @@ const DetailProduct: React.FC = () => {
                                 {productSpecs.length > 0 ? (
                                     <table className="spec-table">
                                         <tbody>
-                                            {productSpecs.map((spec) => (
-                                                <tr key={spec.specId}>
-                                                    <td className="spec-name">{spec.specName}</td>
-                                                    <td className="spec-value">{spec.specValue}</td>
-                                                </tr>
-                                            ))}
+                                        {productSpecs.map((spec) => (
+                                            <tr key={spec.specId}>
+                                                <td className="spec-name">{spec.specName}</td>
+                                                <td className="spec-value">{spec.specValue}</td>
+                                            </tr>
+                                        ))}
                                         </tbody>
                                     </table>
                                 ) : (
@@ -524,137 +454,37 @@ const DetailProduct: React.FC = () => {
                             </div>
                         ) : (
                             <div className="reviews-content">
-                                {/* TỔNG QUAN ĐÁNH GIÁ */}
-                                <div className="reviews-overview">
-                                    <div className="review-avg-box">
-                                        <div className="review-avg-score">{avgRating}</div>
-                                        <div className="review-avg-stars">
-                                            {'★'.repeat(Math.round(Number(avgRating)))}
-                                            {'☆'.repeat(5 - Math.round(Number(avgRating)))}
-                                        </div>
-                                        <div className="review-avg-count">{reviews.length} đánh giá</div>
-                                    </div>
-
-                                    <div className="review-bars">
-                                        {[5, 4, 3, 2, 1].map(star => {
-                                            const count = reviews.filter(r => r.rating === star).length;
-                                            const percent = reviews.length > 0 ? (count / reviews.length) * 100 : 0;
-                                            return (
-                                                <div
-                                                    key={star}
-                                                    onClick={() => setFilterRating(filterRating === star ? 0 : star)}
-                                                    className={`review-bar-row${filterRating !== 0 && filterRating !== star ? ' dimmed' : ''}`}
-                                                >
-                                                    <span className="review-bar-label">{star} sao</span>
-                                                    <div className="review-bar-track">
-                                                        <div className="review-bar-fill" style={{ width: `${percent}%` }} />
-                                                    </div>
-                                                    <span className="review-bar-count">{count}</span>
+                                <h4>Đánh giá từ khách hàng</h4>
+                                {reviews.length === 0 ? (
+                                    <p className="text-muted">
+                                        Chưa có đánh giá nào cho sản phẩm này.
+                                    </p>
+                                ) : (
+                                    <div className="review-list">
+                                        {reviews.map((rev, index) => (
+                                            <div
+                                                key={rev.reviewId ?? index}
+                                                className="review-item"
+                                                style={{ borderBottom: '1px solid #eee', padding: '15px 0' }}
+                                            >
+                                                <div className="d-flex align-items-center mb-2">
+                                                    <strong style={{ marginRight: '10px' }}>
+                                                        {rev.userName || 'Khách hàng ẩn danh'}
+                                                    </strong>
+                                                    <span style={{ color: '#fb71b0', fontSize: '14px' }}>
+                                                        {'★'.repeat(rev.rating)}{'☆'.repeat(5 - rev.rating)}
+                                                    </span>
                                                 </div>
-                                            );
-                                        })}
+                                                <p style={{ margin: '5px 0', color: '#555' }}>{rev.comment}</p>
+                                                <span style={{ fontSize: '12px', color: '#999' }}>
+                                                    {rev.created_at
+                                                        ? new Date(rev.created_at).toLocaleDateString('vi-VN')
+                                                        : 'Vừa xong'}
+                                                </span>
+                                            </div>
+                                        ))}
                                     </div>
-                                </div>
-
-                                {/* FILTER THEO SAO — hàng ngang */}
-                                <div className="review-filter-btns">
-                                    <button
-                                        onClick={() => setFilterRating(0)}
-                                        className={`review-filter-btn${filterRating === 0 ? ' active' : ''}`}
-                                    >Tất cả</button>
-                                    {[1, 2, 3, 4, 5].map(star => (
-                                        <button
-                                            key={star}
-                                            onClick={() => setFilterRating(filterRating === star ? 0 : star)}
-                                            className={`review-filter-btn${filterRating === star ? ' active' : ''}`}
-                                        >{star} sao</button>
-                                    ))}
-                                </div>
-
-                                {/* FORM VIẾT ĐÁNH GIÁ */}
-                                {/*<div className="review-form-box">
-                                    <h5 className="review-form-title">Viết đánh giá của bạn</h5>
-                                    <div className="review-star-row">
-                                        <span className="review-star-label">Chọn số sao:</span>
-                                        <div className="review-star-selector">
-                                            {[1, 2, 3, 4, 5].map(star => (
-                                                <span
-                                                    key={star}
-                                                    onClick={() => setUserRating(star)}
-                                                    style={{ color: star <= userRating ? '#facc15' : '#ddd' }}
-                                                >★</span>
-                                            ))}
-                                        </div>
-                                        <span className="review-rating-badge">{userRating} sao</span>
-                                    </div>
-                                    <textarea
-                                        className="review-textarea"
-                                        rows={3}
-                                        placeholder="Chia sẻ cảm nhận của bạn về sản phẩm này..."
-                                        value={userComment}
-                                        onChange={(e) => setUserComment(e.target.value)}
-                                    />
-                                    <button
-                                        className="btn-buy-now review-submit-btn"
-                                        onClick={handleSubmitReview}
-                                        disabled={isSubmittingReview}
-                                    >
-                                        {isSubmittingReview ? 'Đang gửi...' : 'Gửi đánh giá'}
-                                    </button>
-                                </div>*/}
-
-                                {/* DANH SÁCH ĐÁNH GIÁ */}
-                                <h4 className="review-list-title">
-                                    Đánh giá từ khách hàng
-                                    {filterRating > 0 && (
-                                        <span className="review-filter-badge">
-                                            {filterRating} sao
-                                            <span onClick={() => setFilterRating(0)} className="review-filter-badge-close">×</span>
-                                        </span>
-                                    )}
-                                </h4>
-
-                                {(() => {
-                                    const filtered = filterRating > 0
-                                        ? reviews.filter(r => r.rating === filterRating)
-                                        : reviews;
-
-                                    if (filtered.length === 0) return (
-                                        <p className="review-empty">
-                                            {filterRating > 0
-                                                ? `Chưa có đánh giá ${filterRating} sao nào.`
-                                                : 'Chưa có đánh giá nào. Hãy là người đầu tiên!'}
-                                        </p>
-                                    );
-
-                                    return (
-                                        <div className="review-list">
-                                            {filtered.map((rev, index) => (
-                                                <div key={index} className="review-item">
-                                                    <div className="review-avatar">
-                                                        {(rev.userName || 'K').charAt(0).toUpperCase()}
-                                                    </div>
-                                                    <div className="review-body">
-                                                        <div className="review-meta">
-                                                            <strong className="review-username">{rev.userName || 'Khách hàng ẩn danh'}</strong>
-                                                            <span className="review-date">
-                                                                {rev.created_at
-                                                                    ? new Date(rev.created_at).toLocaleDateString('vi-VN')
-                                                                    : 'Vừa xong'}
-                                                            </span>
-                                                        </div>
-                                                        <div className="review-stars-display">
-                                                            {'★'.repeat(rev.rating)}
-                                                            <span className="review-stars-empty">{'★'.repeat(5 - rev.rating)}</span>
-                                                            <span className="review-score-badge">{rev.rating}.0</span>
-                                                        </div>
-                                                        <p className="review-comment">{rev.comment}</p>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    );
-                                })()}
+                                )}
                             </div>
                         )}
                     </div>
