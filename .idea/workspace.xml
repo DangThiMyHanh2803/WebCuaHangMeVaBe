@@ -7,9 +7,7 @@
     <list default="true" id="59dcd129-e92b-4fab-8894-714e7b14aca6" name="Changes" comment="Update database">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/discountCoupon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/discountCoupon.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/style/discountCoupon.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/style/discountCoupon.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageDetailsProducts/detailProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageDetailsProducts/detailProduct.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pagePayment/payment.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pagePayment/payment.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/pagePayment/payment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pagePayment/payment.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -185,7 +183,8 @@
       <workItem from="1782663565475" duration="17000" />
       <workItem from="1782667159684" duration="1698000" />
       <workItem from="1782670277361" duration="151000" />
-      <workItem from="1782814946942" duration="6915000" />
+      <workItem from="1782814946942" duration="7080000" />
+      <workItem from="1782904525733" duration="1134000" />
     </task>
     <task id="LOCAL-00001" summary="Update database">
       <option name="closed" value="true" />

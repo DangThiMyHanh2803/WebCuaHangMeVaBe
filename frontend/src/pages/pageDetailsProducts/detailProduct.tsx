@@ -437,12 +437,20 @@ const DetailProduct: React.FC = () => {
                             <div className="discount-slider-list" ref={listRef}>
                                 {discounts.map(discount => (
                                     <DiscountCoupon
+                                        key={discount.discountId}
                                         discount={discount}
-                                        onUse={() => {
+                                        onUse={(code) => {
+
+                                            if (!code) {
+                                                localStorage.removeItem("savedDiscount");
+                                                return;
+                                            }
+
                                             localStorage.setItem(
                                                 "savedDiscount",
                                                 JSON.stringify(discount)
                                             );
+
                                         }}
                                     />
                                 ))}

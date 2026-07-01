@@ -212,6 +212,32 @@ const Payment: React.FC = () => {
 
         alert("Áp dụng thành công!");
     };
+    useEffect(() => {
+
+        const updateVoucher = () => {
+
+            const saved = JSON.parse(
+                localStorage.getItem("savedDiscount") || "null"
+            );
+
+            if (saved) {
+                setSelectedVoucher(saved);
+                setVoucherCode(saved.discountCode);
+            } else {
+                setSelectedVoucher(null);
+                setVoucherCode("");
+            }
+
+        };
+
+        updateVoucher();
+
+        window.addEventListener("discountChanged", updateVoucher);
+
+        return () =>
+            window.removeEventListener("discountChanged", updateVoucher);
+
+    }, []);
 
     return (
         <div className="payment-page">

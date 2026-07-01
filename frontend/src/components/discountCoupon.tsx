@@ -21,12 +21,33 @@ const DiscountCoupon: React.FC<Props> = ({ discount, onUse }) => {
     const [isSaved, setIsSaved] = useState(false);
 
     const handleSave = () => {
-        localStorage.setItem(
-            "savedDiscount",
-            JSON.stringify(discount)
+        const saved = JSON.parse(
+            localStorage.getItem("savedDiscount") || "null"
         );
 
-        onUse?.(discount.discountCode);
+        console.log("saved:", saved);
+        console.log("current:", discount);
+
+        if (saved?.discountId === discount.discountId) {
+            console.log("Bỏ lưu");
+
+            localStorage.removeItem("savedDiscount");
+
+            console.log(localStorage.getItem("savedDiscount"));
+            onUse?.("");
+        } else {
+            console.log("Lưu");
+
+            localStorage.setItem(
+                "savedDiscount",
+                JSON.stringify(discount)
+            );
+
+            setIsSaved(true);
+            onUse?.(discount.discountCode);
+        }
+
+        window.dispatchEvent(new Event("discountChanged"));
     };
     const formatValue = () => {
         if (discount.discountType === "percent") {
@@ -44,21 +65,19 @@ const DiscountCoupon: React.FC<Props> = ({ discount, onUse }) => {
     useEffect(() => {
 
         const updateSaved = () => {
-
             const saved = JSON.parse(
                 localStorage.getItem("savedDiscount") || "null"
             );
 
             setIsSaved(saved?.discountId === discount.discountId);
-
         };
 
         updateSaved();
 
-        window.addEventListener("storage", updateSaved);
+        window.addEventListener("discountChanged", updateSaved);
 
         return () =>
-            window.removeEventListener("storage", updateSaved);
+            window.removeEventListener("discountChanged", updateSaved);
 
     }, [discount.discountId]);
     return (
@@ -78,18 +97,7 @@ const DiscountCoupon: React.FC<Props> = ({ discount, onUse }) => {
             <div className="discount-right">
                 <button
                     disabled={!discount.status}
-                    onClick={() => {
-                        localStorage.setItem(
-                            "savedDiscount",
-                            JSON.stringify(discount)
-                        );
-
-                        setIsSaved(true);
-
-                        window.dispatchEvent(new Event("storage"));
-
-                        onUse?.(discount.discountCode);
-                    }}
+                    onClick={handleSave}
                 >
                     {isSaved ? "Đã lưu" : "Lưu"}
                 </button>
