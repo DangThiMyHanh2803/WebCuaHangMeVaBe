@@ -67,19 +67,20 @@ const getReviewsByUserId = (userId, callback) => {
     db.query(sql, [userId], callback);
 };
 
-/* CREATE REVIEW — orderId là optional (nullable) */
+/* CREATE REVIEW */
 const createReview = (data, callback) => {
     const sql = `
         INSERT INTO reviews
-            (userId, productId, orderId, rating, comment)
-        VALUES (?, ?, ?, ?, ?)
+            (userId, productId, orderId, orderDetailId, rating, comment)
+        VALUES (?, ?, ?, ?, ?, ?)
     `;
     db.query(
         sql,
         [
             data.userId,
             data.productId,
-            data.orderId || null,   // orderId không bắt buộc
+            data.orderId || null,
+            data.orderDetailId || null, // Thêm orderDetailId vào đây
             data.rating,
             data.comment
         ],
