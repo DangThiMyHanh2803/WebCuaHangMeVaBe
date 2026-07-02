@@ -1,8 +1,6 @@
 .address-page {
     padding: 20px;
 }
-
-/* breadcrumb giống home */
 .breadcrumb {
     font-size: 14px;
     color: rgba(255, 109, 153, 0.73);
@@ -18,13 +16,10 @@
     text-decoration: underline;
     color: #16a34a;
 }
-
-/* layout 3 cột */
 .address-container {
     display: flex;
     gap: 20px;
 }
-
 /* LEFT */
 .left-sidebar {
     width: 250px;
@@ -32,12 +27,10 @@
     padding: 15px;
     border-radius: 10px;
 }
-
 .user-box {
     text-align: center;
     margin-bottom: 15px;
 }
-
 .avatar {
     width: 60px;
     height: 60px;
@@ -45,12 +38,10 @@
     border-radius: 50%;
     margin: 0 auto 10px;
 }
-
 .menu {
     list-style: none;
     padding: 0;
 }
-
 .menu li {
     padding: 10px;
     border-bottom: 1px solid #eee;
@@ -64,7 +55,6 @@
     color: #db2777;
     font-weight: bold;
 }
-
 /* CENTER */
 .address-form {
     flex: 1;
@@ -72,16 +62,13 @@
     padding: 20px;
     border-radius: 10px;
 }
-
 .address-form h3 {
     margin-bottom: 5px;
 }
-
 .address-form p {
     margin-bottom: 15px;
     color: gray;
 }
-
 .address-form input,
 .address-form select,
 .address-form textarea {
@@ -91,21 +78,17 @@
     border-radius: 6px;
     border: 1px solid #ddd;
 }
-
 .row {
     display: flex;
     gap: 10px;
 }
-
 textarea {
     height: 100px;
 }
-
 .btn-group {
     display: flex;
     gap: 10px;
 }
-
 .btn-submit {
     background: #f472b6;
     color: white;
@@ -114,7 +97,6 @@ textarea {
     border-radius: 8px;
     cursor: pointer;
 }
-
 .btn-update {
     background: white;
     color: #db2777;
@@ -125,12 +107,10 @@ textarea {
     transition: 0.2s;
     width: 80px;
 }
-
 .btn-update:hover {
     background: #db2777;
     color: white;
 }
-
 /* RIGHT */
 .right-sidebar {
     width: 250px;
@@ -138,36 +118,30 @@ textarea {
     flex-direction: column;
     gap: 15px;
 }
-
 .info-card {
     background: #fff;
     padding: 10px;
     border-radius: 10px;
 }
-
 .info-card img {
     width: 100%;
     border-radius: 8px;
 }
-
 /* ADDRESS LIST */
 .address-list {
     margin-top: 24px;
 }
-
 .address-list h4 {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 12px;
     color: #374151;
 }
-
 .address-cards {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
-
 .address-card {
     border: 1px solid #fce7f3;
     border-radius: 10px;
@@ -175,45 +149,37 @@ textarea {
     background: #fff5f9;
     transition: box-shadow 0.2s;
 }
-
 .address-card:hover {
     box-shadow: 0 2px 8px rgba(219,39,119,0.1);
 }
-
 .address-card--default {
     border-color: #db2777;
     background: #fce7f3;
 }
-
 .address-card__main {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
 }
-
 .address-card__info {
     flex: 1;
 }
-
 .address-card__header {
     display: flex;
     align-items: center;
     gap: 8px;
     margin-bottom: 4px;
 }
-
 .address-card__name {
     font-weight: 600;
     font-size: 14px;
     color: #111827;
 }
-
 .address-card__phone {
     color: #6b7280;
     font-size: 13px;
 }
-
 .address-card__badge {
     background: #db2777;
     color: white;
@@ -222,7 +188,6 @@ textarea {
     border-radius: 20px;
     font-weight: 500;
 }
-
 .address-card__detail {
     font-size: 13px;
     color: #374151;
@@ -231,14 +196,12 @@ textarea {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
 .address-card__note {
     font-size: 12px;
     color: #9ca3af;
     font-style: italic;
     margin: 2px 0 0;
 }
-
 .address-card__actions {
     display: flex;
     flex-direction: column;
@@ -246,7 +209,6 @@ textarea {
     align-items: flex-end;
     flex-shrink: 0;
 }
-
 .btn-set-default {
     border: 1px solid #db2777;
     color: #db2777;
@@ -258,12 +220,10 @@ textarea {
     transition: 0.2s;
     white-space: nowrap;
 }
-
 .btn-set-default:hover {
     background: #db2777;
     color: white;
 }
-
 .btn-delete {
     border: none;
     color: #9ca3af;
@@ -274,7 +234,59 @@ textarea {
     text-decoration: underline;
     padding: 0;
 }
-
 .btn-delete:hover {
     color: #ef4444;
+}
+/* ================= MOBILE MENU ================= */
+.menu-toggle{
+    display:none;
+    width:44px;
+    height:44px;
+    border:none;
+    border-radius:8px;
+    background:#39b54a;
+    color:#fff;
+    font-size:20px;
+    cursor:pointer;
+    margin-bottom:15px;
+}
+@media (max-width:768px){
+    .account-page{
+        padding:15px;
+    }
+    .breadcrumb{
+        margin-top:70px;
+    }
+    .right-sidebar {
+        display: none;
+    }
+    .menu-toggle{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+    .account-container{
+        display:block;
+    }
+    .account-form{
+        width:100%;
+        padding:15px;
+    }
+    .account-form-wrapper{
+        flex-direction:column-reverse;
+        gap:25px;
+    }
+    .form-left,
+    .form-right{
+        width:100%;
+    }
+    .form-right{
+        align-items:center;
+    }
+    .row{
+        flex-direction:column;
+    }
+    .btn-submit{
+        width:100%;
+    }
 }

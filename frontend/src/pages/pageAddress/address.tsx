@@ -5,7 +5,7 @@ import banner4 from "../../assets/banners/banner4.png";
 import banner6 from "../../assets/banners/banner6.png";
 import AccoutMenu from "../../components/accoutMenu";
 import axios from "axios";
-
+import AccountMenu from "../../components/accoutMenu";
 interface AddressItem {
     addressId: number;
     fullName: string;
@@ -16,16 +16,13 @@ interface AddressItem {
     note: string;
     isDefault: number;
 }
-
 const emptyForm = { fullName: "", phone: "", province: "", district: "", detailAddress: "", note: "" };
-
 const Address: React.FC = () => {
     const currentUser = useMemo(() => JSON.parse(localStorage.getItem("user") || "{}"), []);
-
     const [form, setForm] = useState(emptyForm);
     const [addresses, setAddresses] = useState<AddressItem[]>([]);
     const [editingId, setEditingId] = useState<number | null>(null);
-
+    const [showMenu, setShowMenu] = useState(false);
     const fetchAddresses = async () => {
         if (!currentUser.userId) return;
         try {
@@ -48,18 +45,13 @@ const Address: React.FC = () => {
             setAddresses([]);
         }
     };
-
     useEffect(() => { fetchAddresses(); }, []);
-
     const handleAdd = async () => {
         if (!currentUser.userId) return;
         try {
             const isFirst = addresses.length === 0;
-            await axios.post(`http://localhost:5000/api/address`, {
-                ...form,
-                userId: currentUser.userId,
-                isDefault: isFirst ? 1 : 0
-            });
+            await axios.post(`http://localhost:5000/api/address`, {...form,
+                userId: currentUser.userId, isDefault: isFirst ? 1 : 0});
             setForm(emptyForm);
             setEditingId(null);
             fetchAddresses();
@@ -67,7 +59,6 @@ const Address: React.FC = () => {
             alert("Có lỗi xảy ra, vui lòng thử lại.");
         }
     };
-
     const handleUpdate = async () => {
         if (!editingId) return;
         try {
@@ -77,7 +68,6 @@ const Address: React.FC = () => {
             alert("Có lỗi xảy ra, vui lòng thử lại.");
         }
     };
-
     const handleSetDefault = async (addressId: number) => {
         try {
             await axios.put(`http://localhost:5000/api/address/${addressId}/default`, { userId: currentUser.userId });
@@ -86,7 +76,6 @@ const Address: React.FC = () => {
             alert("Có lỗi xảy ra.");
         }
     };
-
     const handleDelete = async (addressId: number) => {
         if (!window.confirm("Bạn có chắc muốn xóa địa chỉ này?")) return;
         try {
@@ -96,7 +85,6 @@ const Address: React.FC = () => {
             alert("Có lỗi xảy ra.");
         }
     };
-
     return (
         <div className="address-page">
             <p className="breadcrumb">
@@ -104,32 +92,28 @@ const Address: React.FC = () => {
                 <a href="/account"> Trang cá nhân</a> &gt;
                 <a href="/address"> Địa chỉ của bạn</a>
             </p>
-
+            <button className="menu-toggle" onClick={() => setShowMenu(true)}>
+                <i className="fa-solid fa-bars"></i>
+            </button>
             <div className="address-container">
-                <AccoutMenu />
-
+                <AccountMenu showMenu={showMenu} onClose={() => setShowMenu(false)}/>
                 <div className="address-form">
                     <h3>Thêm địa chỉ nhận hàng mới</h3>
                     <p>Vui lòng xác nhận các nội dung bên dưới</p>
-
                     <input value={form.fullName} onChange={(e) => setForm({ ...form, fullName: e.target.value })} placeholder="Nhập tên..." />
                     <input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="Nhập số điện thoại..." />
-
                     <div className="row">
                         <input value={form.province} onChange={(e) => setForm({ ...form, province: e.target.value })} placeholder="Tỉnh/Thành phố..." />
                         <input value={form.district} onChange={(e) => setForm({ ...form, district: e.target.value })} placeholder="Quận/Huyện..." />
                     </div>
-
                     <input value={form.detailAddress} onChange={(e) => setForm({ ...form, detailAddress: e.target.value })} placeholder="Địa chỉ chi tiết..." />
                     <textarea value={form.note} onChange={(e) => setForm({ ...form, note: e.target.value })} placeholder="Ghi chú" />
-
                     <div className="btn-group">
                         {editingId && (
                             <button className="btn-update" onClick={handleUpdate}>Sửa</button>
                         )}
                         <button className="btn-submit" onClick={handleAdd}>Thêm địa chỉ</button>
                     </div>
-
                     {/* DANH SÁCH ĐỊA CHỈ */}
                     {addresses.length > 0 && (
                         <div className="address-list">
@@ -166,7 +150,6 @@ const Address: React.FC = () => {
                         </div>
                     )}
                 </div>
-
                 <div className="right-sidebar">
                     <div className="info-card">
                         <img src={banner4} alt="banner" />

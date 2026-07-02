@@ -1,8 +1,6 @@
 .account-page {
     padding: 20px;
 }
-
-/* breadcrumb */
 .breadcrumb {
     font-size: 14px;
     color: rgba(255, 109, 153, 0.73);
@@ -18,112 +16,25 @@
     text-decoration: underline;
     color: #16a34a;
 }
-
 /* layout */
 .account-container {
     display: flex;
     gap: 20px;
 }
-
-
-
 .sub {
     font-size: 12px;
     color: gray;
 }
-
-
-/* FORM */
-/*.account-form {
-    flex: 1;
-    background: #fff;
-    padding: 25px;
-    border-radius: 15px;
-    border: 2px solid #60a5fa;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.account-form h3 {
-    margin-bottom: 5px;
-}
-
-.account-form p {
-    color: gray;
-    margin-bottom: 10px;
-}
-
-!* input giống address *!
-.account-form input,
-.account-form select,
-.account-form textarea {
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    width: 100%;
-}
-
-!* row giống address *!
-.row {
-    display: flex;
-    gap: 10px;
-}
-
-!* textarea *!
-.account-form textarea {
-    height: 80px;
-    resize: none;
-}
-
-!* avatar *!
-.avatar-upload {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-top: 10px;
-}
-
-.avatar-large {
-    width: 80px;
-    height: 80px;
-    background: #ddd;
-    border-radius: 50%;
-}
-
-!* button *!
-.btn-submit {
-    margin-top: 10px;
-    background: #f472b6;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 200px;
-}
-
-.btn-upload {
-    border: 1px solid #f472b6;
-    background: transparent;
-    color: #f472b6;
-    padding: 8px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-}*/
 .account-form {
     flex: 1;
     background: #fff;
     padding: 20px;
     border-radius: 10px;
 }
-
 .desc {
     margin-bottom: 20px;
     color: gray;
 }
-
-
 .account-form-wrapper {
     display: flex;
     justify-content: space-between;
@@ -134,20 +45,17 @@
     flex-direction: column;
     gap: 12px;
 }
-
 /* title */
 .form-left h3 {
     font-size: 18px;
     font-weight: 600;
     color: #374151;
 }
-
 .form-left p {
     font-size: 13px;
     color: #6b7280;
     margin-bottom: 5px;
 }
-
 /* input + select + textarea */
 .form-left input,
 .form-left select,
@@ -158,7 +66,6 @@
     font-size: 14px;
     transition: all 0.25s ease;
 }
-
 /* focus */
 .form-left input:focus,
 .form-left select:focus,
@@ -167,24 +74,20 @@
     border-color: #f472b6; /* hồng */
     box-shadow: 0 0 0 2px rgba(244, 114, 182, 0.2);
 }
-
 /* row (2 cột ngang) */
 .row {
     display: flex;
     gap: 10px;
 }
-
 .row select,
 .row input {
     flex: 1;
 }
-
 /* textarea */
 .form-left textarea {
     min-height: 80px;
     resize: none;
 }
-
 /* button */
 .btn-submit {
     margin-top: 10px;
@@ -192,15 +95,12 @@
     padding: 10px;
     border: none;
     border-radius: 8px;
-
     background: linear-gradient(135deg, #f472b6, #4ade80);
     color: white;
     font-weight: 500;
-
     cursor: pointer;
     transition: 0.3s;
 }
-
 /* hover */
 .btn-submit:hover {
     opacity: 0.9;
@@ -214,14 +114,12 @@
     justify-content: center;
     gap: 15px;
 }
-
 .avatar-large {
     width: 100px;
     height: 100px;
     background: #ddd;
     border-radius: 50%;
 }
-
 .btn-submit {
     margin-top: 10px;
     background: #f472b6;
@@ -232,7 +130,6 @@
     cursor: pointer;
     width: 200px;
 }
-
 .btn-upload {
     border: 1px solid #f472b6;
     background: transparent;
@@ -244,24 +141,67 @@
 .btn-submit:hover {
     background: #db2777;
 }
-
 .btn-upload:hover {
     background: #fce7f3;
 }
+/* ================= MOBILE MENU ================= */
+.menu-toggle{
+    display:none;
+    width:44px;
+    height:44px;
+    border:none;
+    border-radius:8px;
+    background:#39b54a;
+    color:#fff;
+    font-size:20px;
+    cursor:pointer;
+    margin-bottom:15px;
+}
 
-@media (max-width: 768px) {
-    .account-container {
-        flex-direction: column;
+@media (max-width:768px){
+
+    .account-page{
+        padding:15px;
     }
 
-    .account-form-wrapper {
-        flex-direction: column;
-        gap: 20px;
+    .breadcrumb{
+        margin-top:70px;
+    }
+
+    .menu-toggle{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    .account-container{
+        display:block;
+    }
+
+    .account-form{
+        width:100%;
+        padding:15px;
+    }
+
+    .account-form-wrapper{
+        flex-direction:column-reverse;
+        gap:25px;
     }
 
     .form-left,
-    .form-right {
-        width: 100%;
+    .form-right{
+        width:100%;
+    }
+
+    .form-right{
+        align-items:center;
+    }
+
+    .row{
+        flex-direction:column;
+    }
+
+    .btn-submit{
+        width:100%;
     }
 }
-

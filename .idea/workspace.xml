@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59dcd129-e92b-4fab-8894-714e7b14aca6" name="Changes" comment="Update database">
-      <change afterPath="$PROJECT_DIR$/frontend/src/assets/backgrounds/background2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageLogin/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageLogin/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/accoutMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/accoutMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/style/accountMenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/style/accountMenu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageAccount/account.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageAccount/account.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageAccount/account.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageAccount/account.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageAddress/address.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageAddress/address.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageAddress/address.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageAddress/address.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
