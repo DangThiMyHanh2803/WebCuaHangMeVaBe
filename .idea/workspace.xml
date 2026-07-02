@@ -6,10 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="59dcd129-e92b-4fab-8894-714e7b14aca6" name="Changes" comment="Update database">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/style/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/style/footer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/style/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/style/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/style/header2.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/style/header2.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/product/CategorySidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/product/CategorySidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/product/productCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/product/productCard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/product/productGrid.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/product/productGrid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/style/category.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/product/category.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageHome/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageHome/home.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,11 +100,11 @@
       <recent name="D:\Mon Nam 4\ChuyenDeWeb\Cửa hàng mẹ và bé\Web" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Mon Nam 4\ChuyenDeWeb\Cửa hàng mẹ và bé\Web\frontend\src\components\product" />
       <recent name="D:\Mon Nam 4\ChuyenDeWeb\Cửa hàng mẹ và bé\Web\frontend\src\components" />
       <recent name="D:\Mon Nam 4\ChuyenDeWeb\Cửa hàng mẹ và bé\Web\frontend\src\components\style" />
       <recent name="D:\Mon Nam 4\ChuyenDeWeb\Cửa hàng mẹ và bé\Web\backend\controllers\Account" />
       <recent name="D:\Mon Nam 4\ChuyenDeWeb\Cửa hàng mẹ và bé\Web\frontend\src\pages\pageDetailsProducts" />
-      <recent name="D:\Mon Nam 4\ChuyenDeWeb\Cửa hàng mẹ và bé\Web\frontend\src\pages" />
     </key>
   </component>
   <component name="RunManager" selected="Database Script.babyshop">
@@ -186,7 +187,8 @@
       <workItem from="1782670277361" duration="151000" />
       <workItem from="1782814946942" duration="7080000" />
       <workItem from="1782904525733" duration="1904000" />
-      <workItem from="1782914817844" duration="10300000" />
+      <workItem from="1782914817844" duration="10473000" />
+      <workItem from="1782986802008" duration="1526000" />
     </task>
     <task id="LOCAL-00001" summary="Update database">
       <option name="closed" value="true" />
