@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59dcd129-e92b-4fab-8894-714e7b14aca6" name="Changes" comment="Update database">
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/backgrounds/background2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/product/CategorySidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/product/CategorySidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/product/productCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/product/productCard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/product/productGrid.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/product/productGrid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/style/category.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/product/category.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageHome/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageHome/home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageLogin/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageLogin/login.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="LyKhang" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
