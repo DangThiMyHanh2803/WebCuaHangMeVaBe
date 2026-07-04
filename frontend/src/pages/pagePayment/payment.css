@@ -13,9 +13,12 @@ body {
 }
 
 .payment-page {
-    width: 1000px;
-    margin:80px auto 0 auto;
+    width: 100%;
+    max-width: 1000px;
+    margin: 80px auto 0 auto;
     background-color: transparent;
+    box-sizing: border-box;
+    padding: 0 16px;
 }
 
 /* Các khối nội dung */
@@ -62,9 +65,11 @@ body {
     color: #777;
     margin-top: 5px;
 }
+
 .payment-btn-change-address {
     margin-left: auto;
 }
+
 .payment-btn-change-address button {
     border: none;
     background: none;
@@ -97,7 +102,6 @@ body {
     border-bottom: 1px solid #f5f5f5;
 }
 
-/* cột sản phẩm */
 .payment-product-info {
     display: flex;
     align-items: center;
@@ -115,6 +119,7 @@ body {
     font-size: 14px;
     font-weight: 555;
 }
+
 .payment-total-sp {
     color: #f41435;
     font-size: 14px;
@@ -166,15 +171,18 @@ body {
     border-radius: 10px;
     border: 1px dashed var(--pink);
 }
+
 .payment-voucher-box img {
     width: 42px;
     height: 42px;
     transform: translateY(5px);
 }
-.payment-voucher-box span{
+
+.payment-voucher-box span {
     min-width: 120px;
     font-weight: 600;
 }
+
 .payment-voucher-box input {
     flex: 1;
     padding: 10px;
@@ -223,11 +231,10 @@ body {
 .payment-btn-group {
     display: flex;
     justify-content: space-between;
-    gap: 15px; /* 👈 thêm khoảng cách */
+    gap: 15px;
     margin: 10px;
 }
 
-/* nút quay lại */
 .payment-btn-back {
     flex: 1;
     background: white;
@@ -240,13 +247,11 @@ body {
     transition: all 0.25s ease;
 }
 
-/* hover đẹp hơn */
 .payment-btn-back:hover {
     background: var(--pink);
     color: white;
 }
 
-/* nút xác nhận */
 .payment-btn-confirm {
     flex: 1.5;
     background: #fb83b4;
@@ -261,13 +266,159 @@ body {
     transition: all 0.25s ease;
 }
 
-/* hover nổi lên */
 .payment-btn-confirm:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 18px rgba(247, 161, 196, 0.6);
 }
 
-/* click */
 .payment-btn-confirm:active {
     transform: scale(0.97);
+}
+
+/* ===== TABLET (≤ 1024px) ===== */
+@media (max-width: 1024px) {
+    .payment-page {
+        padding: 0 12px;
+    }
+}
+
+/* ===== MOBILE (≤ 768px) ===== */
+@media (max-width: 768px) {
+    .payment-page {
+        width: 100%;
+        max-width: 100%;
+        margin: 65px 0 0 0;
+        padding: 0 10px;
+    }
+
+    .payment-body-page > div {
+        padding: 16px 14px;
+        border-radius: 12px;
+        margin-top: 8px;
+    }
+
+    .payment-title {
+        font-size: 15px;
+        margin-bottom: 12px;
+    }
+
+    /* Địa chỉ */
+    .payment-container-address {
+        gap: 12px;
+        padding: 12px;
+        flex-wrap: wrap;
+    }
+
+    .payment-container-address img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .payment-info-user .payment-name-phone .payment-name {
+        font-size: 15px;
+    }
+
+    /* Ẩn header bảng sản phẩm, dùng card layout */
+    .payment-order-header {
+        display: none;
+    }
+
+    .payment-product-card {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 14px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .payment-product-info {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .payment-product-info img {
+        width: 64px;
+        height: 64px;
+        border-radius: 8px;
+        flex-shrink: 0;
+    }
+
+    .payment-name-sp {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    /* Label cho các cột sản phẩm */
+    .payment-type-sp::before   { content: "Size: ";      color: #888; font-size: 12px; }
+    .payment-qty-sp::before    { content: "Số lượng: ";  color: #888; font-size: 12px; }
+    .payment-price-sp::before  { content: "Đơn giá: ";   color: #888; font-size: 12px; }
+    .payment-total-sp::before  { content: "Thành tiền: "; color: #888; font-size: 12px; font-weight: 600; }
+
+    .payment-total-sp {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    /* Vận chuyển */
+    .payment-ship-info {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    /* Voucher box */
+    .payment-voucher-box {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .payment-voucher-box img {
+        width: 32px;
+        height: 32px;
+        transform: none;
+    }
+
+    .payment-voucher-box span {
+        min-width: unset;
+        font-size: 14px;
+    }
+
+    .payment-voucher-box input {
+        width: 100%;
+        flex: unset;
+    }
+
+    .payment-btn-apply {
+        width: 100%;
+        height: 38px;
+    }
+
+    /* Tổng tiền: full width trên mobile */
+    .payment-total-summary {
+        align-self: stretch;
+        width: 100%;
+    }
+
+    .payment-total-summary .payment-row {
+        font-size: 14px;
+    }
+
+    .payment-final {
+        font-size: 16px;
+    }
+
+    /* Nút */
+    .payment-btn-group {
+        flex-direction: column;
+        margin: 0;
+        gap: 10px;
+    }
+
+    .payment-btn-back,
+    .payment-btn-confirm {
+        flex: unset;
+        width: 100%;
+        padding: 14px;
+        font-size: 15px;
+    }
 }
