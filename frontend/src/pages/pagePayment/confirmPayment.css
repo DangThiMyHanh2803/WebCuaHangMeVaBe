@@ -1,0 +1,117 @@
+.confirm-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.confirm-box {
+    max-width: 480px;
+    width: 100%;
+    padding: 40px 30px;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.confirm-btn {
+    color: #fff;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 25px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.confirm-btn-group {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    margin-top: 25px;
+    width: 100%;
+}
+
+.confirm-btn-home {
+    flex: 1;
+    background-color: #fff;
+    color: #ff69b4;
+    border: 2px solid #ff69b4;
+    padding: 12px 15px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.confirm-btn-primary {
+    flex: 1;
+    background-color: #ff69b4;
+    color: #fff;
+    border: none;
+    padding: 12px 15px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.confirm-input {
+    width: 100%;
+    padding: 11px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 12px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Số tiền hiển thị lớn (dùng ở màn xác nhận / thẻ / OTP) */
+.confirm-amount-lg {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.confirm-amount-md {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+/* ===== MOBILE (≤ 768px) ===== */
+@media (max-width: 768px) {
+    .confirm-wrapper {
+        padding: 12px;
+    }
+
+    .confirm-box {
+        padding: 28px 18px;
+    }
+
+    .confirm-btn-group {
+        flex-direction: column;
+    }
+
+    .confirm-amount-lg {
+        font-size: 20px;
+    }
+
+    .confirm-amount-md {
+        font-size: 18px;
+    }
+}
