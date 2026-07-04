@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59dcd129-e92b-4fab-8894-714e7b14aca6" name="Changes" comment="Update database">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/accoutMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/accoutMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/style/accountMenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/style/accountMenu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageAccount/account.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageAccount/account.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageAccount/account.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageAccount/account.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageAddress/address.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageAddress/address.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageAddress/address.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageAddress/address.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/pagePayment/confirmPayment.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageCart/cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageCart/cart.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageCart/cartX.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageCart/cartX.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageDetailsProducts/detailProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageDetailsProducts/detailProduct.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pagePayment/VnpayReturn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pagePayment/VnpayReturn.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pagePayment/confirmPages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pagePayment/confirmPages.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pagePayment/payment.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pagePayment/payment.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageReview/myReview.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageReview/myReview.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/pageReview/myReview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/pageReview/myReview.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,12 +44,12 @@
     &quot;assignee&quot;: &quot;Dang-Thi-My-Hanh&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Dang-Thi-My-Hanh/WebCuaHangMeVaBe.git&quot;,
-    &quot;accountId&quot;: &quot;3394d5a4-329b-453f-8a71-f30195d52894&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/DangThiMyHanh2803/WebCuaHangMeVaBe.git",
+    "accountId": "4e2f20df-c8c8-4ff0-985a-af572b1ac813"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -56,48 +58,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Database Script.babyshop.executor&quot;: &quot;Run&quot;,
-    &quot;Database Script.database.sql.executor&quot;: &quot;Run&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/ProjectCDW&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\Mon Nam 4\\ChuyenDeWeb\\Cửa hàng mẹ và bé\\Web\\frontend\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Database Script.babyshop.executor": "Run",
+    "Database Script.database.sql.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript Debug.index.html.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "LyKhang",
+    "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/ProjectCDW/frontend/src/pages",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2025.2.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ],
-    &quot;RunConfigurationTargetLRU&quot;: [
-      &quot;0f733b72-f881-482a-be8f-a31ae45cb48c/schema/\&quot;babyshop\&quot;&quot;,
-      &quot;0f733b72-f881-482a-be8f-a31ae45cb48c&quot;,
-      &quot;fa6229f2-0810-4021-9524-cced8f149b2c&quot;
+    "RunConfigurationTargetLRU": [
+      "0f733b72-f881-482a-be8f-a31ae45cb48c/schema/\"babyshop\"",
+      "0f733b72-f881-482a-be8f-a31ae45cb48c",
+      "fa6229f2-0810-4021-9524-cced8f149b2c"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\ProjectCDW\frontend\src\pages" />
       <recent name="D:\Mon Nam 4\ChuyenDeWeb\Cửa hàng mẹ và bé\Web" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
