@@ -40,6 +40,7 @@ const History: React.FC = () => {
     const [activeTab, setActiveTab] = useState<string>("Tất cả");
     const [orders, setOrders] = useState<OrderGroup[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const [showAccountMenu, setShowAccountMenu] = useState(false);
 
     // States cho chức năng Đánh giá
     const [reviewModalOpen, setReviewModalOpen] = useState(false);
@@ -170,10 +171,19 @@ const History: React.FC = () => {
                 <a href="/">Trang chủ</a> &gt;
                 <a href="/account"> Trang cá nhân</a> &gt;
                 <span> Lịch sử đơn hàng</span>
+                <button
+                    className="menu-mobile-toggle"
+                    onClick={() => setShowAccountMenu(true)}
+                >
+                    ☰ Tài khoản
+                </button>
             </p>
 
             <div className="history-container">
-                <AccoutMenu />
+                <AccoutMenu
+                    showMenu={showAccountMenu}
+                    onClose={() => setShowAccountMenu(false)}
+                />
 
                 <div className="history-section">
                     <div className="history-tabs">
@@ -188,8 +198,8 @@ const History: React.FC = () => {
                         ))}
                     </div>
 
-                    <div className="cart-header history-header">
-                        <div className="col-product">Sản phẩm</div>
+                    <div className="history-header">
+                        <div className="history-col-product">Sản phẩm</div>
                         <div>Giá lẻ</div>
                         <div>Kích cỡ</div>
                         <div>Số lượng</div>
@@ -225,7 +235,7 @@ const History: React.FC = () => {
                                         {getUniqueItems(order.items).map((product) => (
                                             <div key={product.orderDetailId || `${product.productId}_${product.size}`} className="history-item">
                                                 <div
-                                                    className="col-product"
+                                                    className="history-col-product"
                                                     onClick={() => navigate(`/detailproduct/${product.productId}`)}
                                                     style={{ cursor: "pointer" }}
                                                 >
