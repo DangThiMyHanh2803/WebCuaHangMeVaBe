@@ -22,7 +22,6 @@ const MyReviewsPage: React.FC = () => {
     const navigate = useNavigate();
     const [reviews, setReviews] = useState<MyReview[]>([]);
     const [loading, setLoading] = useState(true);
-    const [showAccountMenu, setShowAccountMenu] = useState(false);
 
     // Edit state
     const [editingId, setEditingId] = useState<number | null>(null);
@@ -127,19 +126,10 @@ const MyReviewsPage: React.FC = () => {
                 <a href="/">Trang chủ</a> &gt;
                 <a href="/account">Trang cá nhân</a> &gt;
                 <span>Đánh giá của tôi</span>
-                <button
-                    className="menu-mobile-toggle"
-                    onClick={() => setShowAccountMenu(true)}
-                >
-                    ☰ Tài khoản
-                </button>
             </p>
 
             <div className="account-container">
-                <AccountMenu
-                    showMenu={showAccountMenu}
-                    onClose={() => setShowAccountMenu(false)}
-                />
+                <AccountMenu />
 
                 <div className="account-form">
                     <div className="my-reviews-wrapper">

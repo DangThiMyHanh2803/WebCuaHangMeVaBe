@@ -14,7 +14,12 @@ interface CheckoutProduct {
     quantity: number;
     size: "S" | "M" | "L";
 }
-
+interface Discount{
+    discountId:number;
+    discountCode:string;
+    discountValue:number;
+    discountType:"percent"|"fixed";
+}
 const Payment: React.FC = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -24,7 +29,9 @@ const Payment: React.FC = () => {
     // State quản lý địa chỉ để tự động cập nhật khi fetch API
     const [shippingAddress, setShippingAddress] = useState<string>("Đang tải địa chỉ...");
     const [shippingAddressId, setShippingAddressId] = useState<number>(0);
-
+    const [savedDiscounts,setSavedDiscounts]=useState<Discount[]>([]);
+    const [selectedVoucher,setSelectedVoucher]=useState<Discount|null>(null);
+    const [voucherCode,setVoucherCode]=useState("");
     // Lấy thông tin đơn hàng từ location.state (ngoại trừ địa chỉ)
     const {
         checkoutProducts = [],
@@ -37,8 +44,27 @@ const Payment: React.FC = () => {
         discountAmount?: number;
         finalTotal?: number;
     };
+    const shippingFee = 25000;
 
-    const finalAmountWithShip = finalTotal + 25000;
+// tiền sau khuyến mãi sản phẩm
+    const subtotal = finalTotal;
+
+// tiền giảm từ voucher
+    const voucherDiscount =
+        selectedVoucher == null
+            ? 0
+            : selectedVoucher.discountType === "percent"
+                ? subtotal * selectedVoucher.discountValue / 100
+                : selectedVoucher.discountValue;
+
+// không cho giảm quá tiền hàng
+    const realVoucherDiscount = Math.min(
+        voucherDiscount,
+        subtotal
+    );
+
+    const finalAmountWithShip =
+        subtotal - realVoucherDiscount + shippingFee;
 
     // Effect: Kiểm tra giỏ hàng rỗng
     useEffect(() => {
@@ -102,7 +128,21 @@ const Payment: React.FC = () => {
 
         fetchUserDataAndAddress();
     }, [location.state]);
+    useEffect(() => {
+        const saved = JSON.parse(
+            localStorage.getItem("savedDiscount") || "null"
+        );
 
+        if (saved) {
+            setSelectedVoucher(saved);          // nếu muốn lưu luôn voucher
+            setVoucherCode(saved.discountCode); // hiển thị lên ô input
+        }
+    }, []);
+    useEffect(() => {
+        console.log("Voucher:", selectedVoucher);
+        console.log("Voucher Discount:", voucherDiscount);
+        console.log("Final:", finalAmountWithShip);
+    }, [selectedVoucher]);
     const handleBackToCart = () => navigate("/cart");
 
     // LUỒNG XỬ LÝ THANH TOÁN THẬT KHI BẤM NÚT XÁC NHẬN
@@ -155,6 +195,22 @@ const Payment: React.FC = () => {
                 alert("Có lỗi kết nối hệ thống xảy ra, vui lòng thử lại sau!");
             }
         }
+    };
+    const applyVoucher = () => {
+        const voucher = savedDiscounts.find(
+            v =>
+                v.discountCode.trim().toUpperCase() ===
+                voucherCode.trim().toUpperCase()
+        );
+
+        if (!voucher) {
+            alert("Voucher không tồn tại!");
+            return;
+        }
+
+        setSelectedVoucher(voucher);
+
+        alert("Áp dụng thành công!");
     };
 
     return (
@@ -273,17 +329,46 @@ const Payment: React.FC = () => {
                     <div className="payment-voucher-box">
                         <img src={voucher} alt="voucher" />
                         <span>Mã giảm giá:</span>
-                        <input type="text" placeholder="Nhập mã voucher..." />
-                        <button className="payment-btn-apply">Áp dụng</button>
+                        <input
+                            value={voucherCode}
+                            onChange={(e)=>setVoucherCode(e.target.value)}
+                            placeholder="Nhập mã voucher"
+                        />
+
+                        <button
+                            className="payment-btn-apply"
+                            onClick={applyVoucher}
+                        >
+                            Áp dụng
+                        </button>
                     </div>
 
                     <div className="payment-total-summary">
-                        <div className="payment-row"><span>Tiền hàng:</span><span>{temporaryTotal.toLocaleString()}đ</span></div>
-                        <div className="payment-row"><span>Phí ship:</span><span>25.000đ</span></div>
-                        <div className="payment-row"><span>Giảm giá:</span><span className="payment-minus">-{discountAmount.toLocaleString()}đ</span></div>
+                        <div className="payment-row">
+                            <span>Tiền hàng</span>
+                            <span>{temporaryTotal.toLocaleString()}đ</span>
+                        </div>
+
+                        <div className="payment-row">
+                            <span>Khuyến mãi sản phẩm</span>
+                            <span>-{discountAmount.toLocaleString()}đ</span>
+                        </div>
+
+                        <div className="payment-row">
+                            <span>Voucher</span>
+                            <span>-{realVoucherDiscount.toLocaleString()}đ</span>
+                        </div>
+
+                        <div className="payment-row">
+                            <span>Phí ship</span>
+                            <span>{shippingFee.toLocaleString()}đ</span>
+                        </div>
+
                         <div className="payment-row payment-final">
-                            <strong>Tổng thanh toán:</strong>
-                            <strong className="payment-pink-text">{finalAmountWithShip.toLocaleString()}đ</strong>
+                            <strong>Tổng thanh toán</strong>
+                            <strong>
+                                {finalAmountWithShip.toLocaleString()}đ
+                            </strong>
                         </div>
                     </div>
 

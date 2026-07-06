@@ -15,7 +15,7 @@ interface Discount {
 const VoucherPage: React.FC = () => {
 
     const [discounts, setDiscounts] = useState<Discount[]>([]);
-
+    const [showMenu, setShowMenu] = useState(false);
     useEffect(() => {
         fetchDiscounts();
     }, []);
@@ -40,10 +40,12 @@ const VoucherPage: React.FC = () => {
                 <a href="/">Trang chủ</a> &gt;
                 <a href="/frontend/src/pages/pageVoucher/voucher">Gói ưu đãi</a>
             </p>
-
+            <button className="menu-toggle" onClick={() => setShowMenu(true)}>
+                <i className="fa-solid fa-bars"></i>
+            </button>
             <div className="account-container">
 
-                <AccountMenu />
+                <AccountMenu showMenu={showMenu} onClose={() => setShowMenu(false)}/>
 
                 <div className="account-form">
 

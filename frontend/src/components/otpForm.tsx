@@ -80,20 +80,10 @@ const OtpForm: React.FC<Props> = ({
                 )
             }
 
-            <button
-                onClick={handleVerifyOtp}
-            >
-                Xác nhận
-            </button>
-
+            <button   onClick={handleVerifyOtp} >    Xác nhận  </button>
             <p className="resend-text">
-
                 Chưa nhận được mã?
-
-                <span>
-                    Gửi lại
-                </span>
-
+                <span> Gửi lại  </span>
             </p>
 
         </div>

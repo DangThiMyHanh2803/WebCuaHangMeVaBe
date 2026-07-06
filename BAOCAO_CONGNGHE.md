@@ -365,4 +365,133 @@ users ──────────────────┬──── addr
 ╠══════════════════╬═══════════════════════════════════════╣
 ║    PAYMENT       ║  COD / MoMo / VNPAY                   ║
 ╚══════════════════╩═══════════════════════════════════════╝
+
+---
+
+## 10. GỢI Ý SLIDES BÁO CÁO TÓM TẮT
+
+### Slide 1 — Giới thiệu đồ án
+- Tên đồ án: Website cửa hàng mẹ và bé
+- Mục tiêu: xây dựng hệ thống bán hàng trực tuyến cho cửa hàng mẹ và bé
+- Phạm vi: đăng nhập, quản lý sản phẩm, giỏ hàng, thanh toán, lịch sử đơn hàng
+- Thành viên nhóm: điền tên các thành viên và vai trò cụ thể
+
+### Slide 2 — Ý tưởng và giải pháp
+- Chuyển các hoạt động bán hàng từ thủ công sang website
+- Tách riêng Frontend và Backend để dễ bảo trì và mở rộng
+- Sử dụng kiến trúc Client–Server + REST API
+
+### Slide 3 — Kiến trúc hệ thống
+- Frontend: React + React Router + Redux
+- Backend: Node.js + Express
+- Database: MySQL
+- Deployment: Docker Compose
+- Mô hình hoạt động: người dùng gọi API → Backend xử lý → truy vấn CSDL → trả kết quả về Frontend
+
+### Slide 4 — Kỹ thuật Frontend (điểm cơ bản)
+- Component-based UI với React
+- Routing bằng React Router DOM
+- Quản lý state bằng useState/useEffect và Redux Toolkit
+- Gọi API bất đồng bộ bằng Axios + async/await
+- Tương tác người dùng: thêm vào giỏ hàng, chọn size, thanh toán, xem lịch sử đơn hàng
+
+### Slide 5 — Kỹ thuật Backend (điểm cơ bản)
+- Express.js xây dựng REST API
+- Mô hình MVC: routes → controllers → models
+- Kết nối CSDL MySQL bằng mysql2
+- Xử lý dữ liệu sản phẩm, đơn hàng, địa chỉ, đánh giá, voucher
+- API phân tầng rõ ràng, dễ mở rộng và bảo trì
+
+### Slide 6 — Kỹ thuật nâng cao
+- Bảo mật: bcrypt cho mật khẩu, OTP xác thực tài khoản, CORS
+- Xử lý upload ảnh bằng multer
+- Thanh toán trực tuyến qua VNPay
+- Validation ở mức cơ bản: kiểm tra dữ liệu đầu vào ở Frontend và Backend
+- Quản lý session/local state bằng localStorage cho giỏ hàng và thông tin người dùng
+
+### Slide 7 — Phân công công việc nhóm
+- Thành viên 1: Xây dựng Frontend, giao diện người dùng
+- Thành viên 2: Xây dựng Backend API và kết nối CSDL
+- Thành viên 3: Quản lý database, xử lý thanh toán và đơn hàng
+- Thành viên 4: Test, sửa lỗi, viết báo cáo và chuẩn bị demo
+
+### Slide 8 — Demo tính năng chính
+- Đăng nhập / đăng ký / OTP xác thực
+- Xem danh sách sản phẩm theo danh mục và tab
+- Tìm kiếm sản phẩm
+- Thêm sản phẩm vào giỏ hàng, chọn size, thay đổi số lượng
+- Thanh toán COD / VNPAY
+- Quản lý địa chỉ, lịch sử đơn hàng, đánh giá sản phẩm
+
+### Slide 9 — Kết quả đạt được
+- Hoàn thành website bán hàng đầy đủ chức năng cơ bản
+- Có giao diện trực quan, thao tác mượt mà
+- Có backend API riêng, kết nối database và xử lý nghiệp vụ
+- Có thể triển khai trên môi trường local hoặc Docker
+
+### Slide 10 — Kết luận và hướng phát triển
+- Ứng dụng đã đáp ứng được các yêu cầu của đồ án môn học
+- Có thể nâng cấp thêm: quản trị admin, giỏ hàng real-time, chat, thanh toán đa phương thức, phân quyền chi tiết
+
+---
+
+## 11. GỢI Ý DEMO TÍNH NĂNG CHÍNH
+
+Thứ tự demo nên thực hiện theo flow người dùng thật:
+1. Mở trang chủ và xem danh sách sản phẩm
+2. Chọn danh mục và xem sản phẩm theo nhóm
+3. Đăng nhập / đăng ký tài khoản
+4. Thêm sản phẩm vào giỏ hàng
+5. Chọn size và số lượng
+6. Đi tới trang thanh toán
+7. Chọn phương thức thanh toán (COD hoặc VNPAY)
+8. Xem lịch sử đơn hàng và đánh giá sản phẩm
+
+> Khi demo, nên nhấn mạnh các điểm kỹ thuật: Frontend phản hồi nhanh, Backend xử lý API, Database lưu trữ dữ liệu, hệ thống có tính năng bảo mật và thanh toán trực tuyến.
+
+---
+
+## 12. GỢI Ý TRẢ LỜI CÂU HỎI VẤN ĐÁP
+
+### Câu hỏi 1: Vì sao chọn React cho Frontend?
+- React có kiến trúc component, dễ phát triển và tái sử dụng UI
+- Hỗ trợ SPA, trải nghiệm người dùng mượt hơn
+- Dễ tích hợp với Redux và React Router
+
+### Câu hỏi 2: Vì sao dùng Node.js + Express cho Backend?
+- Node.js phù hợp cho xử lý I/O bất đồng bộ
+- Express giúp xây dựng API nhanh và rõ cấu trúc
+- Dễ kết nối với MySQL và triển khai trên server
+
+### Câu hỏi 3: Mô hình MVC được áp dụng như thế nào?
+- Routes định nghĩa endpoint
+- Controllers xử lý logic nghiệp vụ
+- Models thực hiện truy vấn database
+- Cấu trúc này giúp code rõ ràng, dễ bảo trì
+
+### Câu hỏi 4: Làm sao để đảm bảo bảo mật?
+- Mật khẩu được hash bằng bcrypt
+- OTP dùng để xác thực tài khoản
+- CORS kiểm soát nguồn gọi API
+- Validation và kiểm tra đầu vào ở Backend
+
+### Câu hỏi 5: Ứng dụng có xử lý bất đồng bộ không?
+- Có, Frontend dùng Axios + async/await để gọi API
+- Backend dùng non-blocking I/O của Node.js
+- Người dùng không cần chờ tải toàn bộ trang
+
+### Câu hỏi 6: Điểm khác biệt giữa đồ án này và một website bán hàng thông thường là gì?
+- Có đầy đủ luồng mua hàng từ trang chủ đến thanh toán
+- Có tích hợp API riêng, database và giao tiếp giữa frontend/backend
+- Có thêm chức năng xác thực OTP và thanh toán VNPAY
+
+---
+
+## 13. MẸO TRÌNH BÀY ĐỂ ĐẠT ĐIỂM CAO
+
+- Nêu rõ các kỹ thuật cơ bản trước, kỹ thuật nâng cao sau
+- Chỉ ra được nơi áp dụng từng công nghệ trong code và chức năng thực tế
+- Khi nói về team work, trình bày rõ phân công và sự phối hợp giữa các thành viên
+- Khi demo, nên chạy đúng các luồng chính, không nên demo quá nhiều chức năng rời rạc
+- Khi trả lời vấn đáp, nên trả lời ngắn gọn, súc tích và gắn với code / chức năng thực tế
 ```

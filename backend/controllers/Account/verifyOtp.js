@@ -2,19 +2,11 @@ const Account =
     require("../../model/accountModel");
 
 const verifyOtp = (req, res) => {
-
-    const {
-        phone,
-        otp
-    } = req.body;
-
-    Account.verifyOtp(
-        phone,
-        otp,
+    const { phone, otp } = req.body;
+    
+    Account.verifyOtp(  phone, otp,
         (err, result) => {
-
             if (err) {
-
                 return res
                     .status(500)
                     .json(err);
